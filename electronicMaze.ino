@@ -1,21 +1,22 @@
-#define r 9
-
+int red = 9;
 int buzzer = 13;
+int sensor = 2;
 
 void setup() {
   Serial.begin(9600);
   pinMode(buzzer, OUTPUT); 
-  pinMode(r, OUTPUT);
+  pinMode(red, OUTPUT);
+  pinMode(sensor, INPUT);
 }
 
 void loop() {
-  int sensorVal = digitalRead(2);
+  int sensorVal = digitalRead(sensor);
   Serial.println(sensorVal);
 
   if (sensorVal == HIGH) {
-    digitalWrite(13, LOW);
+    digitalWrite(buzzer, LOW);
   } else {
-    digitalWrite(13, HIGH);
-    digitalWrite(r, HIGH); //if you want to change color, just change r,g,b HIGH and LOW
+    digitalWrite(buzzer, HIGH);
+    digitalWrite(red, HIGH); 
   }
 }
